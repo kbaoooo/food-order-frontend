@@ -1,0 +1,43 @@
+.list-table {
+  background-color: white;
+}
+
+.list-table-format {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1fr 0.5fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border: 1px solid #cacaca;
+  font-size: 13px;
+}
+
+.list-table-format.title {
+  background-color: #f9f9f9;
+}
+
+.list-table-format img {
+  width: 50px;
+  object-fit: cover;
+}
+
+.list-table-format-product {
+  align-items: center;
+}
+
+.list-table-format-product img {
+  width: 75px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+@media (max-width: 600px) {
+  .list-table-format {
+    grid-template-columns: auto;
+    gap: 15px;
+  }
+
+  .list-table-format.title {
+    display: none;
+  }
+}

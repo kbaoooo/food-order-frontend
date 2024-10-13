@@ -1,0 +1,14 @@
+.verify-email,
+.verifying {
+    height: 150px;
+    margin-top: 100px;
+}
+
+.validation-success {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 150px;
+    margin-top: 50px;
+}
+

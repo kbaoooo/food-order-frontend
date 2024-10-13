@@ -1,0 +1,108 @@
+.vouchers-popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.vouchers-popup-wrapper {
+  position: relative;
+  width: 600px;
+  height: 670px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 40px;
+}
+
+.close-voucher-popup {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  background-color: transparent;
+  font-size: 30px;
+  color: red;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.vouchers-popup {
+    padding: 10px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+/* width */
+.vouchers-popup::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.vouchers-popup::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.vouchers-popup::-webkit-scrollbar-thumb {
+  background: #a09f9f;
+}
+
+/* Handle on hover */
+.vouchers-popup::-webkit-scrollbar-thumb:hover {
+  background: #afafaf;
+}
+
+.voucher-popup-item {
+  display: flex;
+  border: 1px solid tomato;
+  margin-bottom: 20px;
+  border-radius: 13px;
+}
+
+.voucher-popup-item:last-child {
+  margin-bottom: 0;
+}
+
+.voucher-popup-image {
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: tomato;
+}
+
+.voucher-popup-content {
+  position: relative;
+  padding: 7px 10px;
+  flex: 1;
+  border-radius: 13px;
+}
+
+.voucher-popup-item img {
+  width: 50px;
+}
+
+.apply-voucher-btn {
+  position: absolute;
+  right: 13px;
+  top: 10px;
+  background-color: transparent;
+  color: tomato;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.apply-voucher-btn:hover {
+  text-decoration: underline;
+}

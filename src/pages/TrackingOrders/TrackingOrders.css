@@ -1,0 +1,34 @@
+.tracking-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tracking-content {
+  width: 80%;
+}
+
+.tracking-content h2 {
+  margin-bottom: 20px;
+  color: tomato;
+}
+
+.tracking-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.no-orders {
+  color: tomato;
+  margin-top: 50px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .tracking-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,172 @@
+.cart {
+    margin-top: 50px;
+    min-height: 80px;
+}
+
+.cart-items {
+    background-color: white;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.cart-items-title {
+    display: grid; 
+    grid-template-columns: 0.5fr 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    align-items: center;
+    color: grey;
+    font-size: max(1vw, 12px);
+}
+
+.cart-checkbox {
+    display: inline-block;
+    text-align: start !important;
+}
+
+.cart-items-item {
+    color: black;
+    padding: 15px 0;
+}
+
+
+.cart-items-item img {
+    width: 50px;
+}
+
+.cart hr {
+    height: 1px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+.cart-items-item .cross {
+    cursor: pointer;
+}
+
+.cart-bottom {
+    display: flex;
+    justify-content: end;
+}
+
+.cart-total {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 20px;
+    background-color: white;
+    padding: 25px 20px;
+    border-radius: 5px;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    color: #555
+}
+
+.cart-total hr {
+    margin: 10px 0;
+}
+
+.cart-total button {
+    border: none;
+    color: white;
+    background-color: tomato;
+    padding: 12px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-counter {
+    border: 1px solid #cfcbcb;
+    max-width:fit-content;
+    display: flex;
+}
+
+.cart-quantity {
+    text-align: center;
+    border: none;
+    outline: 0;
+    width: 35px;
+}
+
+.cart-counter button {
+    width: 25px;
+    font-size: 17px;
+    background-color: #eaeaea;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.select-voucher {
+    text-align: end;
+    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.select-voucher-btn {
+    background-color: transparent;
+    color: tomato;
+    font-size: 17px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.select-voucher-btn:hover {
+    text-decoration: underline;
+}
+
+.discount {
+    position: relative;
+}
+
+.discount::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + 20px);
+    height: 1.5px;
+    background-color: #a09e9e;
+    transform: translate(-50%, -50%);
+}
+
+.unapplied-voucher-btn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    outline: 0;
+}
+
+.voucher-applied {
+    position: relative;
+    margin-top: 25px;
+    display: flex;
+    justify-content: end;
+    text-align: end;
+}
+
+.voucher-applied-box {
+    color: white;
+    background-color: tomato;
+    padding: 10px;
+}
+
+@media (max-width: 750px) {
+    .cart-bottom {
+        flex-direction: column-reverse;
+    }
+
+    .cart-promocode {
+        justify-content: start;
+    }
+}

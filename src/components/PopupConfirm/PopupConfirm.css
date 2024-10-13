@@ -1,0 +1,67 @@
+.popup-confirm-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup-confirm-wrapper {
+    padding: 20px 30px;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+}
+
+.popup-confirm-wrapper h2 {
+    color: tomato;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.popup-confirm-wrapper p {
+    margin-bottom: 30px;
+}
+
+.popupconfirm-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.popupconfirm-buttons button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+}
+
+.popup-confirm-btn-yes {
+    background-color: tomato;
+    color: white;   
+    border: 1px solid transparent;
+}
+
+.popupconfirm-buttons .popup-confirm-btn-yes:hover {
+    background-color: #d25353;
+}
+
+.popup-confirm-btn-no {
+    background-color: #fff4f2;
+    color: tomato;
+    border: 1px solid tomato;
+}
+
+.popupconfirm-buttons .popup-confirm-btn-no:hover {
+    background-color: #fae4ee;
+}

@@ -1,0 +1,218 @@
+.food-detail-container {
+  padding: 0 50px;
+}
+
+.food-detail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+  gap: 50px;
+}
+
+.food-detail {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 7px;
+}
+
+.display-img {
+  width: 40%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.food-detail-name {
+  font-size: 30px;
+  font-weight: 500;
+  color: tomato;
+}
+
+.sold {
+  font-size: 13px;
+  color: #676767;
+  display: inline-block;
+}
+
+.sold b {
+  font-size: 14.5px;
+  color: #282727;
+}
+
+.food-detail-price {
+  font-size: 35px;
+  color: #ff6347;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.food-detail-cate {
+  margin-top: 20px;
+  color: #676767;
+}
+
+.food-detail-description {
+  color: #2a2929;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.food-detail-btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #ffeee8;
+  border: 1px solid tomato;
+  padding: 8px 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+
+.food-detail-btn p {
+  font-size: 15px;
+  color: tomato;
+}
+
+.food-detail-container h2 {
+  font-size: 25px;
+  color: tomato;
+  margin-bottom: 10px;
+}
+
+.food-detail-comments {
+  margin-top: 30px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 7px;
+}
+
+.stars {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.stars img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.stars-cmt {
+  gap: 2px;
+  display: flex;
+  margin-left: 10px;
+}
+
+.stars-cmt img {
+  width: 13px;
+  cursor: pointer;
+}
+
+.write-comment {
+  margin-top: 20px;
+  width: 60%;
+  height: 200px;
+  font-size: 15px;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.comment-user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment-user b {
+  font-size: 15px;
+  color: tomato;
+  font-weight: 600;
+}
+
+.comment {
+  background-color: white;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+}
+
+.img-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid tomato;
+}
+
+.img-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.comment-content {
+  margin-top: 15px;
+  color: #676767;
+}
+
+.comments {
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-review {
+  color: #888;
+  font-size: 12.5px;
+}
+
+/* width */
+.comments::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.comments::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.comments::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.comments::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* width */
+.write-comment::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.write-comment::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.write-comment::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.write-comment::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

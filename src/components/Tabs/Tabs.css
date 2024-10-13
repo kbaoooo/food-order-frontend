@@ -1,0 +1,83 @@
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: 120px;
+}
+
+.tabs-wrapper {
+  background-color: #fff;
+  border: 2px solid tomato;
+  border-radius: 10px;
+  display: flex;
+  padding: 0 25px;
+  justify-content: center;
+}
+
+.tabs-container ul {
+  display: flex;
+  gap: 50px;
+}
+
+.tabs-container ul li {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.tabs-container ul li div {
+  color: #c5c5c5;
+  text-align: center;
+  padding-top: 15px;
+  transition: 0.5s ease;
+}
+
+.tabs-container ul li div span {
+  display: block;
+}
+
+.tabs-container ul li div .tabs-icon {
+  font-size: 25px;
+}
+
+.tabs-container ul li div .tabs-text {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.tabs-container ul li.tabs-active div {
+  color: tomato;
+}
+
+.tabs-pointer img {
+  width: 27px;
+  height: 27px;
+  object-fit: cover;
+  transform: translateY(-3px);
+}
+
+.tabs-container .tabs-pointer {
+  background-color: red;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 55px;
+  height: 55px;
+  border: 2px solid tomato;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: 0.5s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .tabs-container {
+    display: none;
+  }
+}

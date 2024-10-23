@@ -10,6 +10,7 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const createInstance = (url) => {
   const instance = axios.create({
@@ -41,7 +42,7 @@ const LoginPopup = () => {
     password: "",
   });
 
-  const navvigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     if (e.target.name === "email") {
@@ -86,7 +87,7 @@ const LoginPopup = () => {
       startTransition(async () => {
         try {
           const response = await instance.post(currentApiUrl, data);
-          
+
           if (
             response.status === 200 &&
             response.data &&
@@ -111,7 +112,6 @@ const LoginPopup = () => {
         }
       });
     } else {
-
       // register
 
       if (!data.name) {
@@ -135,7 +135,7 @@ const LoginPopup = () => {
         try {
           const response = await axios.post(currentApiUrl, data);
           console.log(response);
-          
+
           if (
             response.status === 201 &&
             response.data &&
@@ -146,7 +146,7 @@ const LoginPopup = () => {
             if (result.success && result.data) {
               setCurrentState("Đăng nhập");
               setShowLogin(false);
-              navvigate("/verify-email");
+              navigate("/verify-email");
             }
           } else {
             alert("Đã có lỗi xảy ra");
@@ -178,7 +178,7 @@ const LoginPopup = () => {
                   style={{
                     color: "red",
                     fontSize: "13px",
-                    marginBottom: "10px",
+                    marginBottom: "5px",
                   }}
                 >
                   Vui lòng nhập tên đăng nhập
@@ -242,9 +242,22 @@ const LoginPopup = () => {
               />
             )}
           </div>
-          <span style={{ color: "red", fontSize: "13px", marginTop: "10px" }}>
-            {showError.invalid && "Tài khoản hoặc mật khẩu không đúng"}
-          </span>
+          {showError.invalid && (
+            <span
+              style={{
+                color: "red",
+                fontSize: "13px",
+                marginTop: "5px",
+              }}
+            >
+              Tài khoản hoặc mật khẩu không đúng
+            </span>
+          )}
+          {currentState === "Đăng nhập" && (
+            <Link className="forgot-pass" to={"/forgot-pass"} onClick={() => setShowLogin(false)}>
+              Quên mật khẩu?
+            </Link>
+          )}
         </div>
         <button type="submit">
           {isPending && (

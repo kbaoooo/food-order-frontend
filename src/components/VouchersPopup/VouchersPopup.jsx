@@ -22,7 +22,7 @@ function VouchersPopup() {
         const response = await axios.get(`${apiUrl}/voucher/vouchers`);
 
         const result = response.data;
-
+        
         if (result.success && result.data) {
           const validVouchers = result.data.filter(
             (voucher) => new Date(voucher.valid_to) >= new Date()
@@ -101,7 +101,8 @@ function VouchersPopup() {
       1500
     );
   };
-
+  console.log(vouchers);
+  
   return (
     <div className="vouchers-popup-container">
       <div className="vouchers-popup-wrapper">
@@ -112,44 +113,50 @@ function VouchersPopup() {
           x
         </button>
         <div className="vouchers-popup">
-          {vouchers.map((voucher) => (
-            <div key={voucher.voucher_id} className="voucher-popup-item">
-              <div className="voucher-popup-image">
-                <img src={assets.tomatoImage} alt="" />
+          {vouchers.length ? (
+            vouchers?.map((voucher) => (
+              <div key={voucher.voucher_id} className="voucher-popup-item">
+                <div className="voucher-popup-image">
+                  <img src={assets.tomatoImage} alt="" />
+                </div>
+                <div className="voucher-popup-content">
+                  <button
+                    className="apply-voucher-btn"
+                    onClick={() => handleApplyVoucher(voucher)}
+                  >
+                    Áp dụng
+                  </button>
+                  <p style={{ color: "tomato", marginBottom: "5px" }}>
+                    {voucher.code}
+                  </p>
+                  <p style={{ fontSize: "15px" }}>
+                    {voucher.discount_type === "percentage"
+                      ? `Giảm ${formatPercent(
+                          voucher.discount_value
+                        )} tối đa ${formatCurrency(
+                          voucher.max_discount_amount
+                        )}`
+                      : `Giảm ${formatCurrency(voucher.discount_value)}`}
+                  </p>
+                  <p style={{ fontSize: "15px" }}>
+                    Đơn tối thiểu {formatCurrency(voucher.min_order_amount)}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "12.5px",
+                      textAlign: "end",
+                      color: "tomato",
+                    }}
+                  >
+                    {formatDate(voucher.valid_from)} -{" "}
+                    {formatDate(voucher.valid_to)}
+                  </p>
+                </div>
               </div>
-              <div className="voucher-popup-content">
-                <button
-                  className="apply-voucher-btn"
-                  onClick={() => handleApplyVoucher(voucher)}
-                >
-                  Áp dụng
-                </button>
-                <p style={{ color: "tomato", marginBottom: "5px" }}>
-                  {voucher.code}
-                </p>
-                <p style={{ fontSize: "15px" }}>
-                  {voucher.discount_type === "percentage"
-                    ? `Giảm ${formatPercent(
-                        voucher.discount_value
-                      )} tối đa ${formatCurrency(voucher.max_discount_amount)}`
-                    : `Giảm ${formatCurrency(voucher.discount_value)}`}
-                </p>
-                <p style={{ fontSize: "15px" }}>
-                  Đơn tối thiểu {formatCurrency(voucher.min_order_amount)}
-                </p>
-                <p
-                  style={{
-                    fontSize: "12.5px",
-                    textAlign: "end",
-                    color: "tomato",
-                  }}
-                >
-                  {formatDate(voucher.valid_from)} -{" "}
-                  {formatDate(voucher.valid_to)}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="no-voucher-valid">Không có voucher nào khả dụng</p>
+          )}
         </div>
       </div>
     </div>

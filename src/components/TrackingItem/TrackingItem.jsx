@@ -7,13 +7,14 @@ import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 
-function TrackingItem({ tracking_item, className, onCanceled }) {
+function TrackingItem({ tracking_item, className, onCanceled, user }) {
   const {
     token,
     apiUrl,
     setShowPopupConfirm,
     setShowLoginPopup,
     handleShowPopupMessage,
+    setShowLoadingPage,
   } = useContext(StoreContext);
   const navigate = useNavigate();
   const TOKEN = token();
@@ -36,52 +37,114 @@ function TrackingItem({ tracking_item, className, onCanceled }) {
           onConfirm: null,
           onCancel: null,
         });
-        try {
-          const response = await axios.post(
-            `${apiUrl}/order/update-order-status`,
-            {
-              order_id: tracking_item?.order_id,
-              status: "canceled",
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${TOKEN}`,
+        if (tracking_item?.payment_method === "money") {
+          try {
+            const response = await axios.post(
+              `${apiUrl}/order/update-order-status`,
+              {
+                order_id: tracking_item?.order_id,
+                status: "canceled",
+                user,
+                order_customer_id: user?.user_id,
               },
-            }
-          );
-
-          if (response && response.data) {
-            const result = response.data;
-            if (result.success) {
-              handleShowPopupMessage(
-                {
-                  show: true,
-                  message: "Đã hủy đơn hàng",
-                  iconImage: assets.tomatoImage,
+              {
+                headers: {
+                  Authorization: `Bearer ${TOKEN}`,
                 },
-                1500,
-                () => {
-                  onCanceled(tracking_item?.order_id);
-                }
-              );
+              }
+            );
+
+            if (response && response.data) {
+              const result = response.data;
+              if (result.success) {
+                handleShowPopupMessage(
+                  {
+                    show: true,
+                    message: "Đã hủy đơn hàng",
+                    iconImage: assets.tomatoImage,
+                  },
+                  1500,
+                  () => {
+                    onCanceled(tracking_item?.order_id);
+                  }
+                );
+              }
             }
+          } catch (error) {
+            setShowPopupConfirm({
+              show: false,
+              message: "",
+              question: "",
+              onConfirm: null,
+              onCancel: null,
+            });
+            handleShowPopupMessage(
+              {
+                show: true,
+                message: "Có lỗi xảy ra, vui lòng thử lại sau",
+                type: "error",
+              },
+              1500
+            );
           }
-        } catch (error) {
-          setShowPopupConfirm({
-            show: false,
-            message: "",
-            question: "",
-            onConfirm: null,
-            onCancel: null,
+        }
+
+        if (tracking_item?.payment_method === "zalopay") {
+          setShowLoadingPage({
+            show: true,
+            content: "Đang thực hiện hoàn tiền...",
           });
-          handleShowPopupMessage(
-            {
-              show: true,
-              message: "Có lỗi xảy ra, vui lòng thử lại sau",
-              type: "error",
-            },
-            1500
-          );
+
+          try {
+            const response = await axios.post(
+              `${apiUrl}/order/update-order-status`,
+              {
+                order_id: tracking_item?.order_id,
+                status: "canceled",
+                user,
+                order_customer_id: user?.user_id,
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${TOKEN}`,
+                },
+              }
+            );
+
+            if (response && response.data) {
+              const result = response.data;
+              if (result.success) {
+                const timeout = setTimeout(() => {
+                  setShowLoadingPage({ show: false, content: "" });
+                  handleShowPopupMessage(
+                    {
+                      show: true,
+                      message: "Đã hủy đơn hàng",
+                      iconImage: assets.tomatoImage,
+                    },
+                    1500,
+                    () => {
+                      onCanceled(tracking_item?.order_id);
+                    }
+                  );
+                }, 3000);
+
+                return () => {
+                  clearTimeout(timeout);
+                };
+              }
+            }
+          } catch (error) {
+            setShowLoadingPage({ show: false, content: "" });
+            handleShowPopupMessage(
+              {
+                show: true,
+                message: "Có lỗi xảy ra, vui lòng thử lại sau",
+                type: "error",
+              },
+              1500
+            );
+          }
         }
       },
       onCancel: () => {

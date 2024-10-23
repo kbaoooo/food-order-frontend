@@ -8,14 +8,38 @@ import TrackingItem from "../../components/TrackingItem/TrackingItem";
 function TrackingOrders() {
   const navigate = useNavigate();
   const { token, apiUrl, setShowLoginPopup } = useContext(StoreContext);
+  const [userInfo, setUserInfo] = useState(null);
   const [orders, setOrders] = useState([]);
-  
+
   const TOKEN = token();
 
   if (!TOKEN) {
     navigate("/");
     setShowLoginPopup(true);
   }
+  useEffect(() => {
+    const fecthUserInfo = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/auth/me`, {
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+          },
+        });
+
+        const result = response.data;
+
+        if (result && result.success && result.data) {
+          setUserInfo(result.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (TOKEN) {
+      fecthUserInfo();
+    }
+  }, []);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -45,7 +69,6 @@ function TrackingOrders() {
     }
   }, []);
 
-
   return (
     <div className="tracking-container">
       <div className="tracking-content">
@@ -57,6 +80,7 @@ function TrackingOrders() {
                 <TrackingItem
                   key={item.order_id}
                   tracking_item={item}
+                  user={userInfo}
                   onCanceled={(order_id) => {
                     setOrders(
                       orders.filter((order) => order.order_id !== order_id)

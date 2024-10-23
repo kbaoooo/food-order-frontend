@@ -39,6 +39,11 @@
   overflow-y: auto;
 }
 
+.no-voucher-valid {
+  text-align: center;
+  color: tomato;
+}
+
 /* width */
 .vouchers-popup::-webkit-scrollbar {
   width: 5px;

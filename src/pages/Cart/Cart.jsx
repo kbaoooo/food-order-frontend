@@ -600,6 +600,10 @@ const Cart = () => {
 
               const result = response.data;
               if (result.success && result.data) {
+                setAppliedVoucher(null);
+                setTotalSelectedFood(0);
+                setSelectedFood([]);
+                
                 if (appliedVoucher) {
                   try {
                     const response = await axios.post(
@@ -620,9 +624,6 @@ const Cart = () => {
                     const result = response.data;
 
                     if (result.success) {
-                      setAppliedVoucher(null);
-                      setTotalSelectedFood(0);
-                      setSelectedFood([]);
                       navigate(`/payment/${order_id}`);
                     }
                   } catch (error) {

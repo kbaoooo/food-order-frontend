@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext, useRef } from "react";
+import { useEffect, useState, useContext } from "react";
 import { formatCurrency, formatDate } from "../../helpers";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";

@@ -1,0 +1,66 @@
+.forgotpass-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgotpass-wrapper {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgotpass-input {
+    width: 450px;
+    padding: 30px;
+    text-align: right;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.otp-expired {
+    color: #6f6e6e;
+    font-size: 15px;
+}
+
+.otp-expired p {
+    margin-bottom: 10px;
+}
+ 
+.forgotpass-input input{
+    width: 100%;
+    border: 1px solid #a0a0a0;
+    outline: none;
+    padding: 7px 15px;
+    margin-bottom: 20px;
+}
+
+.forgotpass-input button {
+    background-color: tomato;
+    color: white;
+    padding: 8px 15px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.expired-in {
+    margin-top: 10px;
+    color: #6f6e6e;
+    font-size: 15px;
+}
+
+.forgotpass-input h3 {
+    text-align: center;
+    margin-bottom: 50px;
+}

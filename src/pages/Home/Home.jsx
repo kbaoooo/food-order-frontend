@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { decodeToken } from "react-jwt";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
 import Header from "../../components/Header/Header";
 import "./Home.css";
@@ -11,10 +10,9 @@ import { StoreContext } from "../../context/StoreContext";
 
 const Home = () => {
   const [food_list, setFoodList] = useState([]);
-
   const { apiUrl, token, setShowAddressPopup } = useContext(StoreContext);
   const [category, setCategory] = useState("all");
-
+  const [userInfo, setUserInfo] = useState(null);
   const TOKEN = token();
 
   useEffect(() => {
@@ -27,8 +25,9 @@ const Home = () => {
         });
 
         const result = response.data;
-
+        
         if (result && result.success && result.data) {
+          setUserInfo(result.data);
           if (!result.data.phone_number || !result.data.address) {
             setShowAddressPopup(true);
           }
@@ -45,22 +44,19 @@ const Home = () => {
 
   useEffect(() => {
     const fetchFoodList = async () => {
-      const myDecodedToken = await decodeToken(token());
-
-      const response = await axios.post(`${apiUrl}/menu/get-menu`, {
-        user_id: myDecodedToken?.user_id || null,
+      const response = await axios.get(`${apiUrl}/menu/get-menu`, {
+        user_id: userInfo?.user_id,
       });
       const result = response.data;
       const data = result.data || [];
 
       setFoodList(data);
     };
-     
+
     fetchFoodList();
     const interval = setInterval(() => {
       fetchFoodList();
-    }
-    , 10000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);

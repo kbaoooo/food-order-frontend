@@ -14,7 +14,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
     padding: 25px 30px;
     border-radius: 8px;
     font-size: 14px;
@@ -74,8 +74,17 @@
     font-weight: 500;
 }
 
+.forgot-pass {
+    color: tomato;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: right;
+    margin-top: 10px;
+}
+
 .passw-field {
     position: relative;
+    margin: 0;
 }
 
 .show-password-icon {
@@ -84,10 +93,10 @@
     top: 50%;
     transform: translateY(-50%);        
     cursor: pointer;
+      color: #5f5f5f;
 }
 
 .passw-field input[name="password"] {
     width: 100%;
     margin-bottom: 0;
-
 }

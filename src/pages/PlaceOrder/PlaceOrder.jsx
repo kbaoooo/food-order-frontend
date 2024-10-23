@@ -63,8 +63,6 @@ function PlaceOrder() {
   };
 
   useEffect(() => {
-    console.log(transactionStatus);
-    
     if (transactionStatus === 1 || transactionStatus === 2) {
       const intervalId = localStorage.getItem("intervalId");
       if (intervalId) {
@@ -90,6 +88,7 @@ function PlaceOrder() {
                 transaction_id: transactionId,
                 status: "completed",
                 username: userInfo?.username,
+                user: userInfo,
               }
             );
 
@@ -278,6 +277,7 @@ function PlaceOrder() {
             payment_method: paymentMethod,
             payment_status: "pending",
             transaction_id: `${moment().format("YYMMDD")}_${transID}`,
+            user: userInfo,
           },
           {
             headers: {
@@ -332,6 +332,7 @@ function PlaceOrder() {
             payment_method: paymentMethod,
             payment_status: "pending",
             transaction_id: `${moment().format("YYMMDD")}_${transID}`,
+            user: userInfo,
           },
           {
             headers: {

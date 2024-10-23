@@ -7,7 +7,6 @@ import sadEmoji64 from "../../assets/sad-emoji64.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { assets } from "../../assets/assets";
-import classNames from "classnames";
 import {
   faHeart,
   faStarHalfAlt,

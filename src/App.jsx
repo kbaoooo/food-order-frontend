@@ -20,6 +20,8 @@ import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import OrderDetail from "./pages/TrackingOrders/OrderDetail/OrderDetail";
 import LoadingPage from "./components/LoadingPage/LoadingPage";
 import FeedBack from "./pages/FeedBack/FeedBack";
+import ForgotPass from "./pages/ForgotPass/ForgotPass";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 const App = () => {
   const {
@@ -66,9 +68,11 @@ const App = () => {
               path="/tracking-orders/:order_id"
               element={<OrderDetail />}
             />
+            <Route path="/forgot-pass" element={<ForgotPass />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/tracking-orders" element={<TrackingOrders />} />
             <Route path="/food/:id" element={<FoodDetail />} />
-            <Route path="/feedback/:order_id/:item_id" element={<FeedBack />}/>
+            <Route path="/feedback/:order_id/:item_id" element={<FeedBack />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="*" element={<Page404 />} />
           </Routes>

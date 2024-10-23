@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import Tippy from "@tippyjs/react";
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
           },
         });
         const result = response.data;
-        
+
         if (result.success && result.data && result.data.length > 0) {
           setTotalCart(result.data.length);
         } else {
@@ -69,12 +69,18 @@ const Navbar = () => {
     }
   }, []);
 
+  const handleRedirectAdminPanel = () => {
+    document.cookie = `adminJwtToken=${TOKEN}; path=/; domain=localhost; SameSite=None; Secure`;
+    window.open("http://localhost:5174", "_blank");
+  }
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
     window.location.reload();
   };
-
+  console.log(userInfo);
+  
   return (
     <div className="navbar">
       <Link to="/">
@@ -130,7 +136,7 @@ const Navbar = () => {
           <div className="navbar-profile">
             <div className="navbar-info">
               <img src={assets.profile_icon} alt="" style={{ width: "30px" }} />
-              <p>{userInfo.username}</p>
+              <p>{userInfo?.username}</p>
             </div>
             <ul className="navbar-profile-dropdown">
               <Link to="/tracking-orders">
@@ -144,6 +150,15 @@ const Navbar = () => {
                 />
                 <p>Yêu thích</p>
               </Link>
+              {userInfo?.isAdmin ? (
+                <li onClick={handleRedirectAdminPanel}>
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "18px", color: "tomato" }}
+                  />
+                  <p>Admin Panel</p>
+                </li>
+              ) : null}
               <hr />
               <li onClick={handleLogout}>
                 <img src={assets.logout_icon} alt="" />

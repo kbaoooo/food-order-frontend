@@ -41,8 +41,18 @@ function ResetPassword() {
         const result = response.data;
 
         if (result.success) {
-          navigate("/");
-          setShowLogin(true);
+          handleShowPopupMessage(
+            {
+              show: true,
+              message: "Mật khẩu đã được thay đổi",
+              iconImage: assets.tomatoImage,
+            },
+            1500,
+            () => {
+              navigate("/");
+              setShowLogin(true);
+            }
+          );
         }
       }
     } catch (error) {

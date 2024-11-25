@@ -122,9 +122,9 @@ function ForgotPass() {
             message: "OTP xác thực thành công",
             iconImage: assets.tomatoImage,
           },
-          1500
+          1500,
+          () => navigate("/reset-password", { state: { email } })
         );
-        navigate("/reset-password", { state: { email } });
       }
     } catch (err) {
       console.error(err);

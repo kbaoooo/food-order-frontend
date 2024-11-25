@@ -75,11 +75,15 @@
 }
 
 .forgot-pass {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.forgot-pass a {
     color: tomato;
     cursor: pointer;
     font-size: 13px;
-    text-align: right;
-    margin-top: 10px;
+    width: fit-content;
 }
 
 .passw-field {

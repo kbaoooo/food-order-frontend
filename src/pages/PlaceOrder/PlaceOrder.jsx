@@ -40,6 +40,8 @@ function PlaceOrder() {
     setShowLogin(true);
   }
 
+  console.log(order)
+
   const checkTransactionStatus = async (transaction_id) => {
     console.log('checking transaction status...');
     

@@ -134,7 +134,6 @@ const LoginPopup = () => {
       startTransition(async () => {
         try {
           const response = await axios.post(currentApiUrl, data);
-          console.log(response);
 
           if (
             response.status === 201 &&
@@ -254,9 +253,14 @@ const LoginPopup = () => {
             </span>
           )}
           {currentState === "Đăng nhập" && (
-            <Link className="forgot-pass" to={"/forgot-pass"} onClick={() => setShowLogin(false)}>
-              Quên mật khẩu?
-            </Link>
+            <div className="forgot-pass">
+              <Link
+                to={"/forgot-pass"}
+                onClick={() => setShowLogin(false)}
+              >
+                Quên mật khẩu?
+              </Link>
+            </div>
           )}
         </div>
         <button type="submit">

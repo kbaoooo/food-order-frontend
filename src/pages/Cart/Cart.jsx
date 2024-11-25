@@ -48,6 +48,7 @@ const Cart = () => {
         discount = appliedVoucher.discount_value;
       }
     }
+
     return discount;
   };
 
@@ -600,10 +601,6 @@ const Cart = () => {
 
               const result = response.data;
               if (result.success && result.data) {
-                setAppliedVoucher(null);
-                setTotalSelectedFood(0);
-                setSelectedFood([]);
-                
                 if (appliedVoucher) {
                   try {
                     const response = await axios.post(
@@ -624,6 +621,10 @@ const Cart = () => {
                     const result = response.data;
 
                     if (result.success) {
+                      setTotalSelectedFood(0);
+                      setSelectedFood([]);
+                      setAppliedVoucher(null);
+
                       navigate(`/payment/${order_id}`);
                     }
                   } catch (error) {
@@ -635,10 +636,12 @@ const Cart = () => {
                         message: data.error,
                         iconImage: sadEmoji64,
                       },
-                      2000
+                      2300
                     );
                   }
                 } else {
+                  setTotalSelectedFood(0);
+                  setSelectedFood([]);
                   navigate(`/payment/${order_id}`);
                 }
               } else {
@@ -844,8 +847,6 @@ const Cart = () => {
                 <div className="cart-total-details">
                   <p>Thành tiền</p>
                   <b>
-                    {/* {convertNumberToWords(total).charAt(0).toUpperCase() +
-                      convertNumberToWords(total).slice(1)} */}
                     {formatCurrency(
                       totalSelectedFood - calculateDiscount() < 0
                         ? 0

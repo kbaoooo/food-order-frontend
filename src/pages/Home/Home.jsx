@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
 import Header from "../../components/Header/Header";
 import "./Home.css";
@@ -13,6 +13,7 @@ const Home = () => {
   const { apiUrl, token, setShowAddressPopup } = useContext(StoreContext);
   const [category, setCategory] = useState("all");
   const [userInfo, setUserInfo] = useState(null);
+
   const TOKEN = token();
 
   useEffect(() => {
@@ -45,7 +46,9 @@ const Home = () => {
   useEffect(() => {
     const fetchFoodList = async () => {
       const response = await axios.get(`${apiUrl}/menu/get-menu`, {
-        user_id: userInfo?.user_id,
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
       });
       const result = response.data;
       const data = result.data || [];
